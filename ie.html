@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IE University Website</title>
+    <style>
+        body,
+        .content {
+            width: auto;
+            margin: auto;
+            display: block;
+            text-align:center;
+            font-family: Futura, serif;
+            background-color: dodgerblue;
+        }
+        h1 {
+            color: whitesmoke;
+            display: block;
+            text-decoration: none;
+            width:100%;
+            text-align:center;
+        }
+        h2 {
+            font-size: 20px;
+            color: whitesmoke;
+        }
+        p {
+            font-weight: bold;
+            white-space: nowrap;
+            margin:0 auto;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            white-space: -moz-pre-wrap;
+            white-space: pre-wrap;
+            justify-content: space-between;
+            color: whitesmoke;
+            padding-bottom: 10px;
+        }
+        .parent {
+            display: inline-block;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 30px;
+            padding-bottom: 30px;
+        }
+        .parent button {
+            background-color: darkblue;
+            color: white;
+            border: none;
+            font-size: 15px;
+            height: 112px;
+            width: 112px;
+            box-shadow: 0 2px 4px darkslategray;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .parent button:active {
+            background-color: mediumblue;
+            box-shadow: 0 0 2px darkslategray;
+            transform: translateY(2px);
+        }
+        .parent button:not(:first-child) {
+            margin-top: 10px;
+        }
+        .round-1 {
+            border-radius: 70%;
+            font-family: Futura;
+        }
+        .center {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+        img {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<script>
+    let images = [
+        "<div id='tower'><img src='tower.jpg'></div>",
+        "<div id='cafe'><img src='cafe.jpg'></div>",
+        "<div id='class'><img src='class.jpg'></div>",
+        "<div id='sports'><img src='sports.jpg'></div>",
+        "<div id='audi'><img src='audi.jpg'></div>"
+    ];
+
+    let nameInfo = new Object();
+    let locInfo = new Object();
+    let descInfo = new Object();
+
+    nameInfo = {
+        "Tower": "IE University Tower",
+        "Cafeteria": "IE Cafeteria",
+        "Classroom": "IE Classroom",
+        "Sports Zone": "IE Sports Zone",
+        "Auditorium": "IE Tower Auditorium",
+    }
+
+    locInfo = {
+        "Tower": "Paseo de la Castellana, 259",
+        "Cafeteria": "Inside IE Tower on Level -3",
+        "Classroom": "Inside IE Tower there are 2-4 classrooms on every floor starting from floor 3 and ending on floor 24",
+        "Sports Zone": "West entrance to the IE Tower",
+        "Auditorium": "Located between the cafeteria and sports zone"
+    }
+
+    descInfo = {
+        "Tower": "The IE Tower is the fifth tallest tower in Madrid and the seventh in Spain. \nIt serves as a educational, creative, and recreational centre for students and staff from all around the world.",
+        "Cafeteria": "The cafeteria offers a wide range of food products for students and staff to enjoy.",
+        "Classroom": "The IE University classrooms are well lit and equipped with all the necessary equipment for teaching and learning.",
+        "Sports Zone": "The IE Sports Zone offers many activities to all students and staff. Some include basketball court, gym, swimming pool, and more.",
+        "Auditorium": "The IE Auditorium serves as a convention center for any type of event and many have been hosted here since its opening."
+    }
+
+    window.addEventListener("load",tower,false);
+    function tower(){
+        document.getElementById("image").innerHTML=images[0]
+        document.getElementById("name").innerHTML = nameInfo["Tower"];
+        document.getElementById("location").innerHTML = locInfo["Tower"];
+        document.getElementById("description").innerHTML = descInfo["Tower"];
+    }
+
+    function changeImage(img){
+        let index = images.findIndex(el => el.includes(img));
+        document.getElementById("image").innerHTML=images[index];
+    }
+
+    function changeInfo(loc){
+        document.getElementById("x1").innerHTML = `Welcome to the IE ${loc}!`;
+        document.getElementById("name").innerHTML = nameInfo[loc];
+        document.getElementById("location").innerHTML = locInfo[loc];
+        document.getElementById("description").innerHTML = descInfo[loc];
+    }
+</script>
+<div class = 'content'>
+    <h1>IE Tower Explorer</h1>
+
+    <h2 id="x1">Click through the different facilities!</h2>
+
+    <div id="image" class="center"></div>
+
+    <p>Name: <a id="name">0</a></p>
+    <p>Location: <a id="location">0</a></p>
+    <p>Description: <a id="description">0</a></p>
+
+    <div class = "parent"><button class="round-1" id="cafe" type="button" onclick="changeImage('cafe.jpg');changeInfo('Cafeteria')">Cafeteria</button></div>
+    <div class = "parent"><button class="round-1" id="class" type="button" onclick="changeImage('class.jpg');changeInfo('Classroom')">Classrooms</button></div>
+    <div class = "parent"><button class="round-1" id="sports" type="button" onclick="changeImage('sports.jpg');changeInfo('Sports Zone')">Sports Zone</button></div>
+    <div class = "parent"><button class="round-1" id="audi" type="button" onclick="changeImage('audi.jpg');changeInfo('Auditorium')">Auditorium</button></div>
+    <div class = "parent"><button class="round-1" id="tower" type="button" onclick="changeImage('tower.jpg');changeInfo('Tower')">Tower</button></div>
+</div>
+</body>
+</html>
